@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.yxf.vehiclehj.view.fragment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.yxf.vehiclehj.view.fragment.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_vehicleQueueFragment"
+            app:destination="@id/vehicleQueueFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleQueueFragment"
+        android:name="com.yxf.vehiclehj.view.fragment.VehicleQueueFragment"
+        android:label="fragment_vehicle_queue_list"
+        tools:layout="@layout/fragment_vehicle_queue_list" >
+        <action
+            android:id="@+id/action_vehicleQueueFragment_to_exteriorFragment"
+            app:destination="@id/exteriorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exteriorFragment"
+        android:name="com.yxf.vehiclehj.view.fragment.ExteriorFragment"
+        android:label="fragment_exterior"
+        tools:layout="@layout/fragment_exterior" />
+</navigation>

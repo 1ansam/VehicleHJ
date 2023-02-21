@@ -1,0 +1,115 @@
+<resources>
+    <string name="vehicleQueueTitle">查询车辆</string>
+    <!--欢迎界面-->
+    <string name="app_name">车辆检验</string>
+    <string name="corporationName">良源科技</string>
+    <string name="corporationInformation">提供稳定、安全、高效的汽车检测服务</string>
+    <string name="startEnjoy">立即体验</string>
+    <!--登录界面-->
+    <string name="login">登录</string>
+    <string name="usernameHint">用户名</string>
+    <string name="passwordHint">密码</string>
+    <string name="rememberUsername">记住用户名</string>
+    <string name="corporationLogo">良源科技Logo</string>
+    <string name="settings">设置</string>
+    <!--功能选择界面-->
+    <string name="selectFunctionTitle">功能模块选择</string>
+    <string name="notRegisterVehicleInspection">未登记车辆预检</string>
+    <string name="charge">车辆检验登记收费</string>
+    <string name="personInspectionItem">人工检验项目</string>
+    <string name="dispatch">调度上线</string>
+    <string name="verifySignature">审核签字</string>
+    <string name="vehicleInformation">车辆信息明细</string>
+    <!--注册登记-->
+    <string name="register">注册登记</string>
+    <string name="getData">获取信息</string>
+    <!--人工查验界面-->
+
+    <string name="WaitInspection">待检</string>
+    <string name="Inspection">检验</string>
+    <string name="notRegistered">未登记</string>
+    <string name="AJ">安检:</string>
+    <string name="HB">环保:</string>
+    <string name="regularInspection">在用车定期检验</string>
+    <string name="annualInspection">年检</string>
+    <!--检验详情界面-->
+    <string name="inspectionInfomation">检验详情</string>
+    <string name="vehicleBaseInfo">车辆基本信息</string>
+    <string name="lsh">流水号</string>
+    <string name="hphm">号牌号码</string>
+    <string name="hpzl">号牌种类</string>
+    <string name="hpys">号牌颜色</string>
+    <string name="cllx">车辆类型</string>
+    <string name="wkcc">外廓尺寸</string>
+    <string name="zbzl">整备质量</string>
+    <string name="ltgg">轮胎规格</string>
+    <string name="ccrq">出厂日期</string>
+    <string name="inspectionItemStatus">检验项目状态</string>
+    <string name="inspectionItem">检验项目</string>
+    <string name="inspectionCondition">检验情况</string>
+    <string name="inspectionDate">检验时间</string>
+    <string name="inspectionPersonnel">检验时间</string>
+    <!--调度-->
+    <string name="startInspection">开始上线</string>
+    <string name="dynamicInspection">动态检测</string>
+    <!--签字审核-->
+    <string name="pass">通过</string>
+    <string name="reject">驳回</string>
+    <string name="exit">退出</string>
+    <string name="back">返回</string>
+    <string name="clear">清除</string>
+    <string name="commit">提交</string>
+    <!--检验项目信息 -->
+    <string name="jcxm_">检验项目：%1$s</string>
+    <string name="jczt_">检测状态：%1$s</string>
+    <string name="jcry1_">检测人员 1：%1$s</string>
+    <string name="jcry2_">检测人员 2：%1$s</string>
+    <string name="jckssj_">检测开始时间：%1$s</string>
+    <string name="jcjssj_">检测结束时间：%1$s</string>
+    <string name="ajywlb_">安检业务类别：%1$s</string>
+    <string name="hjywlb_">环检业务类别：%1$s</string>
+
+    <!-- 照片信息 -->
+    <string name="zpajdm_">照片安检代码：%1$s</string>
+    <string name="zphjdm_">照片环检代码：%1$s</string>
+
+    <!-- 车辆信息 -->
+    <string name="wkcc_">%1$s * %2$s * %3$s</string>
+
+    <!-- 车辆审核 -->
+    <string name="ajlsh_">安检流水号：%1$s</string>
+    <string name="hjlsh_">环检流水号：%1$s</string>
+
+    <!-- 车辆队列 -->
+    <string name="jyzt_">%1$s  %2$s</string>
+
+    <!-- 车辆收费 -->
+    <string name="amount_">金额：%1$d</string>
+    <string name="oid_">订单编号：%1$s</string>
+    <string name="hphm_">号牌号码：%1$s</string>
+    <!-- 查验时间 -->
+    <string name="F1_sj">外观查验 %1$d</string>
+    <string name="C1_sj">底盘查验 %1$d</string>
+    <string name="DC_sj">动态查验 %1$d</string>
+    <string name="R0_sj">路试查验 %1$d</string>
+
+    <!-- 行车制动 -->
+    <array name="select_xczd_method">
+        <item>制动距离</item>
+        <item>平均减速度</item>
+    </array>
+
+    <!-- 驻车制动 -->
+    <array name="select_zczd_method">
+        <item>坡道驻车</item>
+        <item>拉力计</item>
+    </array>
+    <!-- 驻车制动率标准 -->
+    <array name="select_zczdlbzxz">
+        <item>20%</item>
+        <item>15%</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
