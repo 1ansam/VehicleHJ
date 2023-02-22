@@ -6,12 +6,22 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
+import android.net.wifi.WifiManager
+import android.os.Handler
+import android.os.Looper
 import android.util.Base64
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import com.yxf.vehiclehj.MyApp
+import com.yxf.vehiclehj.bean.CommonRequest
+import com.yxf.vehiclehj.bean.CommonResponse
+import com.yxf.vehicleinspection.singleton.GsonSingleton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,6 +32,87 @@ import java.util.*
  */
 
 const val FILE_PROVIDER = "com.yxf.vehiclehj.fileprovider"
+const val VEHICLE_QUEUE = "LYYDJKR101"
+const val EXTERIOR_PHOTO = "LYYDJKR102"
+const val SYSTEM_PARAMS = "LYYDJKR103"
+const val WRITE_USER_LOGIN = "LYYDJKW001"
+const val SAVE_EXTERIOR_ITEM = "LYYDJKW101"
+const val SAVE_EXTERIOR_PHOTO = "LYYDJKW102"
+
+suspend inline fun <reified T> apiCall(crossinline call : suspend CoroutineScope.() -> CommonResponse<T>): CommonResponse<T>{
+    return withContext(Dispatchers.IO){
+        val res : CommonResponse<T>
+        try {
+            res = call()
+        }catch (e : Throwable){
+            return@withContext ApiException.build(e).toResponse<T>()
+        }
+
+
+        return@withContext res
+    }
+}
+
+/**
+ * 将请求实体类包装通用请求jsonString
+ * @param element 请求实体类实例化对象
+ * @return String
+ */
+fun <T> getJsonData(element : T) : String{
+    val requestArray = ArrayList<T>()
+    requestArray.add(element)
+    return GsonSingleton.instance.toJson(CommonRequest(requestArray))
+}
+/**
+ * 将请求实体类列表包装为通用请求jsonString
+ * @param elements 请求实体类实例化对象列表
+ * @return String
+ */
+fun <T> getJsonData(elements : List<T>) : String{
+    val requestArray = ArrayList<T>()
+    elements.forEach {
+        requestArray.add(it)
+    }
+//    for (element in elements){
+//        requestArray.add(element)
+//    }
+    return GsonSingleton.instance.toJson(CommonRequest(requestArray))
+}
+
+fun getIpAddress() : String {
+    val wifiManager : WifiManager = MyApp.context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+    if (wifiManager.isWifiEnabled){
+        val wifiInfo = wifiManager.connectionInfo
+        val ipAddress = wifiInfo.ipAddress
+        return int2Ip(ipAddress)
+
+    }else{
+        val handler = Handler(Looper.getMainLooper())
+        handler.post{
+            showToastOnUiThread(MyApp.context,"WIFI未打开", Toast.LENGTH_SHORT)
+        }
+        return ""
+    }
+
+}
+
+/**
+ * 将16进制Int类型Ip地址转为10进制String类型
+ * 格式为xxx.xxx.xxx.xxx
+ * @param ipAddress 16进制Int类型Ip地址
+ * @return String
+ */
+private fun int2Ip(ipAddress : Int) : String{
+    return "${ipAddress and 0XFF}.${ipAddress shr 8 and 0XFF}.${ipAddress shr 16 and 0XFF}.${ipAddress shr 24 and 0XFF}"
+}
+
+
+fun showToastOnUiThread(context: Context, string : String, during : Int){
+    val handler = Handler(Looper.getMainLooper())
+    handler.post{
+        Toast.makeText(context,string, during).show()
+    }
+}
 
 
 fun showShortToast (context: Context, string : String){

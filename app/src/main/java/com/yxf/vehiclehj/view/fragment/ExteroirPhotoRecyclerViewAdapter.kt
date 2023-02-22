@@ -2,7 +2,7 @@ package com.yxf.vehiclehj.view.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.yxf.vehiclehj.bean.ImageItemR102Response
+import com.yxf.vehiclehj.bean.ExteriorPhotoR102Response
 import com.yxf.vehiclehj.databinding.ItemExteriorPhotoBinding
 import com.yxf.vehicleinspection.base.BaseRvAdapter
 import com.yxf.vehicleinspection.base.BaseRvViewHolder
@@ -12,7 +12,7 @@ import com.yxf.vehicleinspection.base.BaseRvViewHolder
  *   time:2023/2/21
  */
 class ExteroirPhotoRecyclerViewAdapter :
-    BaseRvAdapter<ImageItemR102Response, ItemExteriorPhotoBinding>() {
+    BaseRvAdapter<ExteriorPhotoR102Response, ItemExteriorPhotoBinding>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -24,7 +24,7 @@ class ExteroirPhotoRecyclerViewAdapter :
         holder: BaseRvViewHolder<ItemExteriorPhotoBinding>,
         position: Int,
         binding: ItemExteriorPhotoBinding,
-        bean: ImageItemR102Response,
+        bean: ExteriorPhotoR102Response,
     ) {
         binding.tvZpmc.text = bean.Zpmc
         binding.tvZpdm.text = bean.Zpdm

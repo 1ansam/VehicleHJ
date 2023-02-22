@@ -34,8 +34,9 @@ class VehicleQueueRecyclerViewAdapter() :  BaseRvAdapter<VehicleQueueR101Respons
         binding: FragmentVehicleQueueBinding,
         bean: VehicleQueueR101Response,
     ) {
-        binding.itemNumber.text = bean.Hpzl
+        binding.itemNumber.text = bean.Hjlsh
         binding.content.text = bean.Hphm
+        binding.tvDjrq.text = bean.Djrq
         holder.itemView.setOnClickListener{
             onItemViewClickListener?.onItemClick(it,position,bean)
         }

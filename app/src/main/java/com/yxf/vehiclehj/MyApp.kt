@@ -10,12 +10,23 @@ import android.content.IntentFilter
 import android.net.wifi.WifiManager
 import android.os.Environment
 import android.widget.Toast
+import com.yxf.vehiclehj.repo.DatabaseRepo
+import com.yxf.vehiclehj.repo.ExteriorRepo
+import com.yxf.vehiclehj.repo.QueueRepo
+import com.yxf.vehiclehj.repo.UserRepo
+import com.yxf.vehiclehj.room.DataDictionaryDatabase
+import java.util.Queue
 
 /**
  *   author:yxf
  *   time:2023/2/17
  */
 class MyApp : Application() {
+    private val database by lazy { DataDictionaryDatabase.getDatabase(context) }
+    val userRepo by lazy{ UserRepo()}
+    val queueRepo by lazy{ QueueRepo()}
+    val exteriorRepo by lazy{ ExteriorRepo()}
+    val databaseRepo by lazy{ DatabaseRepo(database.systemParamsDao())}
 
     companion object{
         @SuppressLint("StaticFieldLeak")
@@ -31,7 +42,7 @@ class MyApp : Application() {
         super.onCreate()
 
         context = applicationContext
-        CrashHandler.getInstance(context)?.setCrashLogDir(getCrashLogDir())
+//        CrashHandler.getInstance(context)?.setCrashLogDir(getCrashLogDir())
 
 
 

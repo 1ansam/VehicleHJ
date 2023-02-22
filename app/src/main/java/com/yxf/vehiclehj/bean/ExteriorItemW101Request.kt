@@ -15,11 +15,11 @@ package com.yxf.vehiclehj.bean
  *   @param WorkJcxm 不合格项目
  *   @param WorkMan 检测员
  */
-data class ExteriorItemR101Request(
+data class ExteriorItemW101Request(
     val Lsh : String,
     val Hpzl : String,
     val Hphm : String,
-    val Jccs : String,
+    val Jccs : Int,
     val JcData : String,
     val KsTime : String,
     val JsTime : String,

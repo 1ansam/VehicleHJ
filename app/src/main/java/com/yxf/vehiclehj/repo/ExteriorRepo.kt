@@ -1,6 +1,13 @@
 package com.yxf.vehiclehj.repo
 
-import com.yxf.vehiclehj.bean.ImageItemR102Response
+import com.yxf.vehiclehj.bean.ExteriorItemW101Request
+import com.yxf.vehiclehj.bean.ExteriorPhotoR102Request
+import com.yxf.vehiclehj.bean.ExteriorPhotoR102Response
+import com.yxf.vehiclehj.bean.SavePhotoW102Request
+import com.yxf.vehiclehj.utils.*
+import com.yxf.vehicleinspection.service.QueryService
+import com.yxf.vehicleinspection.service.WriteService
+import com.yxf.vehicleinspection.singleton.RetrofitService
 
 /**
  *   author:yxf
@@ -43,11 +50,37 @@ class ExteriorRepo {
         Pair("是否适合工况法检测",true),
     )
 
-    val photoList = listOf<ImageItemR102Response>(
-        ImageItemR102Response("100201","前45度"),
-        ImageItemR102Response("100202","后45度"),
-        ImageItemR102Response("100203","车架号"),
-        ImageItemR102Response("100204","发动机号"),
-        ImageItemR102Response("100205","仪表盘里程")
+    val photoList = listOf<ExteriorPhotoR102Response>(
+        ExteriorPhotoR102Response("100201","前45度"),
+        ExteriorPhotoR102Response("100202","后45度"),
+        ExteriorPhotoR102Response("100203","车架号"),
+        ExteriorPhotoR102Response("100204","发动机号"),
+        ExteriorPhotoR102Response("100205","仪表盘里程")
     )
+
+    suspend fun getExteriorPhoto(
+        Hjlsh: String,
+    ) = apiCall {
+        RetrofitService.create(QueryService::class.java).queryR102(
+            EXTERIOR_PHOTO,
+            getIpAddress(),
+            getJsonData(ExteriorPhotoR102Request(Hjlsh))
+        )
+    }
+
+    suspend fun saveExteriorItem( exteriorItemW101Request: ExteriorItemW101Request) = apiCall {
+        RetrofitService.create(WriteService::class.java).writeW101(
+            SAVE_EXTERIOR_ITEM,
+            getIpAddress(),
+            getJsonData(exteriorItemW101Request)
+        )
+    }
+
+    suspend fun saveExteriorPhoto(exteriorPhotos : List<SavePhotoW102Request>) = apiCall {
+        RetrofitService.create(WriteService::class.java).writeW102(
+            SAVE_EXTERIOR_PHOTO,
+            getIpAddress(),
+            getJsonData(exteriorPhotos)
+        )
+    }
 }

@@ -25,19 +25,22 @@ import java.io.Serializable
 
  */
 data class VehicleQueueR101Response (
+    val Hjlsh : String,
     val Hphm : String,
     val Hpzl : String,
-//    val HpzlCc : String,
-//    val Djrq : String?,
-//    val Ywlb : String?,
-//    val Jyzt : String?,
-//    val Hjywlb : String,
-//    val HjywlbCc : String?,
-//    val Jccs : Int,
-//    val Hjlsh : String,
-//    val Hjjccs : Int,
-//    val Cllx : String,
-//    val CllxCc : String,
-//    val Ryzl : String
+    val HpzlCc : String,
+    val Djrq : String?,
+    val Ywlb : String?,
+    val Jyzt : String?,
+    val Hjywlb : String,
+    val HjywlbCc : String?,
+    val Jccs : Int,
+
+    val Hjjccs : Int,
+    val Cllx : String,
+    val CllxCc : String,
+    val Ryzl : String,
+    val VIN : String,
+    val Hjdlsj : String,
 
 ): Serializable

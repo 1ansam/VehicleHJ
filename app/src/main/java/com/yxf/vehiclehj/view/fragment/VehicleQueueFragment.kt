@@ -1,6 +1,7 @@
 package com.yxf.vehiclehj.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,12 +11,18 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.yxf.vehiclehj.MyApp
 import com.yxf.vehiclehj.R
 import com.yxf.vehiclehj.bean.VehicleQueueR101Response
 import com.yxf.vehiclehj.databinding.FragmentVehicleQueueBinding
 import com.yxf.vehiclehj.databinding.FragmentVehicleQueueListBinding
+import com.yxf.vehiclehj.utils.showShortSnackbar
 import com.yxf.vehiclehj.utils.showShortToast
+import com.yxf.vehiclehj.viewModel.QueueViewModel
+import com.yxf.vehiclehj.viewModel.QueueViewModelFactory
 import com.yxf.vehicleinspection.base.BaseBindingFragment
 import com.yxf.vehicleinspection.base.BaseRvAdapter
 
@@ -23,25 +30,15 @@ import com.yxf.vehicleinspection.base.BaseRvAdapter
  * A fragment representing a list of Items.
  */
 class VehicleQueueFragment : BaseBindingFragment<FragmentVehicleQueueListBinding>() {
+    private val viewModel by viewModels<QueueViewModel>{ QueueViewModelFactory((this.requireActivity().application as MyApp).queueRepo)}
     private val adapter = VehicleQueueRecyclerViewAdapter()
     override fun init() {
         binding.list.adapter = adapter
         adapter.data = listOf(
-            VehicleQueueR101Response("苏12345","01"),
-            VehicleQueueR101Response("苏22345","02"),
-            VehicleQueueR101Response("苏32345","03"),
-            VehicleQueueR101Response("苏42345","04"),
-            VehicleQueueR101Response("苏52345","05"),
-            VehicleQueueR101Response("苏62345","06"),
-            VehicleQueueR101Response("苏72345","07"),
-            VehicleQueueR101Response("苏82345","08"),
-            VehicleQueueR101Response("苏92345","09"),
-            VehicleQueueR101Response("苏102345","10"),
-            VehicleQueueR101Response("苏112345","11"),
         )
         adapter.onItemViewClickListener = object : BaseRvAdapter.OnItemViewClickListener<VehicleQueueR101Response> {
             override fun onItemClick(view: View, position: Int, bean: VehicleQueueR101Response) {
-                findNavController().navigate(VehicleQueueFragmentDirections.actionVehicleQueueFragmentToExteriorFragment())
+                findNavController().navigate(VehicleQueueFragmentDirections.actionVehicleQueueFragmentToExteriorFragment(bean))
             }
 
         }
@@ -69,6 +66,16 @@ class VehicleQueueFragment : BaseBindingFragment<FragmentVehicleQueueListBinding
     }
 
     private fun getQueue(hphm : String) {
+        lifecycleScope.launchWhenCreated {
+            viewModel.getInspectionQueue(hphm).collect{
+                if (it.Code != "1"){
+                    Log.e("TAG", "getQueue: ${it.Message}", )
+                    showShortSnackbar(binding.root,it.Message)
+                    return@collect
+                }
+                adapter.data = it.Body
+            }
+        }
 
 
     }

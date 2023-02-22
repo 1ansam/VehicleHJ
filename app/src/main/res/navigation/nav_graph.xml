@@ -30,10 +30,16 @@
         <action
             android:id="@+id/action_vehicleQueueFragment_to_exteriorFragment"
             app:destination="@id/exteriorFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/exteriorFragment"
         android:name="com.yxf.vehiclehj.view.fragment.ExteriorFragment"
         android:label="fragment_exterior"
-        tools:layout="@layout/fragment_exterior" />
+        tools:layout="@layout/fragment_exterior"
+        >
+        <argument
+            android:name="beanR101"
+            app:argType="com.yxf.vehiclehj.bean.VehicleQueueR101Response" />
+    </fragment>
 </navigation>
