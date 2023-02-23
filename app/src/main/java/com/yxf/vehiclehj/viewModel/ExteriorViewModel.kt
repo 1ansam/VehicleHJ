@@ -18,13 +18,14 @@ class ExteriorViewModel(val exteriorRepo: ExteriorRepo) : ViewModel() {
         emit(exteriorRepo.getExteriorPhoto(Hjlsh))
     }
 
-    suspend fun saveExteriorItem( exteriorItemW101Request: ExteriorItemW101Request) = flow {
+    fun saveExteriorItem( exteriorItemW101Request: ExteriorItemW101Request) = flow {
         emit(exteriorRepo.saveExteriorItem(exteriorItemW101Request))
     }
 
     fun saveExteriorPhoto(exteriorPhotos : List<SavePhotoW102Request>) = flow {
         emit(exteriorRepo.saveExteriorPhoto(exteriorPhotos))
     }
+    fun exteriorList(lsh : String) = flow { emit(exteriorRepo.getExteriorList(lsh)) }
 }
 
 class ExteriorViewModelFactory(private val exteriorRepo: ExteriorRepo) :

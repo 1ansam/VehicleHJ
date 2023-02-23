@@ -13,7 +13,9 @@ import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.yxf.vehiclehj.MyApp
 import com.yxf.vehiclehj.R
 import com.yxf.vehiclehj.bean.VehicleQueueR101Response
@@ -32,13 +34,14 @@ import com.yxf.vehicleinspection.base.BaseRvAdapter
 class VehicleQueueFragment : BaseBindingFragment<FragmentVehicleQueueListBinding>() {
     private val viewModel by viewModels<QueueViewModel>{ QueueViewModelFactory((this.requireActivity().application as MyApp).queueRepo)}
     private val adapter = VehicleQueueRecyclerViewAdapter()
+    private val args by navArgs<VehicleQueueFragmentArgs>()
     override fun init() {
         binding.list.adapter = adapter
         adapter.data = listOf(
         )
         adapter.onItemViewClickListener = object : BaseRvAdapter.OnItemViewClickListener<VehicleQueueR101Response> {
             override fun onItemClick(view: View, position: Int, bean: VehicleQueueR101Response) {
-                findNavController().navigate(VehicleQueueFragmentDirections.actionVehicleQueueFragmentToExteriorFragment(bean))
+                findNavController().navigate(VehicleQueueFragmentDirections.actionVehicleQueueFragmentToExteriorFragment(bean,args.beanR001))
             }
 
         }

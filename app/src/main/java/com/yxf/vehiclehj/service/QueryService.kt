@@ -1,10 +1,7 @@
 package com.yxf.vehicleinspection.service
 
 
-import com.yxf.vehiclehj.bean.CommonResponse
-import com.yxf.vehiclehj.bean.ExteriorPhotoR102Response
-import com.yxf.vehiclehj.bean.SystemParamsR103Response
-import com.yxf.vehiclehj.bean.VehicleQueueR101Response
+import com.yxf.vehiclehj.bean.*
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -17,12 +14,7 @@ interface QueryService {
 
 
 
-    @POST("VehicleInspection/Query")
-    suspend fun  queryR103(
-        @Query("jkId") jkId: String,
-        @Query("zdbs") zdbs: String,
-        @Query("jsonData") jsonData: String,
-    ): CommonResponse<SystemParamsR103Response>
+
     /**
      * 根据号牌号码（可选的）单独查询环保机动车队列
      */
@@ -44,7 +36,20 @@ interface QueryService {
         @Query("jsonData") jsonData: String,
     ): CommonResponse<ExteriorPhotoR102Response>
 
+    @POST("VehicleInspection/Query")
+    suspend fun  queryR103(
+        @Query("jkId") jkId: String,
+        @Query("zdbs") zdbs: String,
+        @Query("jsonData") jsonData: String,
+    ): CommonResponse<SystemParamsR103Response>
 
+
+    @POST("VehicleInspection/Query")
+    suspend fun  queryR104(
+        @Query("jkId") jkId: String,
+        @Query("zdbs") zdbs: String,
+        @Query("jsonData") jsonData: String,
+    ): CommonResponse<ExteriorItemR104Response>
 
 
 }

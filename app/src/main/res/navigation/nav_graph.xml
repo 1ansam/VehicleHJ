@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_vehicleQueueFragment_to_exteriorFragment"
             app:destination="@id/exteriorFragment" />
+        <argument
+            android:name="beanR001"
+            app:argType="com.yxf.vehiclehj.bean.UserInfoW001Response" />
 
     </fragment>
     <fragment
@@ -41,5 +44,8 @@
         <argument
             android:name="beanR101"
             app:argType="com.yxf.vehiclehj.bean.VehicleQueueR101Response" />
+        <argument
+            android:name="beanR001"
+            app:argType="com.yxf.vehiclehj.bean.UserInfoW001Response" />
     </fragment>
 </navigation>

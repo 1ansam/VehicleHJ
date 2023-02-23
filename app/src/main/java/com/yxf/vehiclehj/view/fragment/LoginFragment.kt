@@ -57,7 +57,7 @@ class LoginFragment : BaseBindingFragment<FragmentLoginBinding>() {
                     Log.e("TAG", "login: ${it.Message}", )
                     return@collect
                 }
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToVehicleQueueFragment())
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToVehicleQueueFragment(it.Body.first()))
             }
 
 

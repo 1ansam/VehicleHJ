@@ -1,9 +1,6 @@
 package com.yxf.vehiclehj.repo
 
-import com.yxf.vehiclehj.bean.ExteriorItemW101Request
-import com.yxf.vehiclehj.bean.ExteriorPhotoR102Request
-import com.yxf.vehiclehj.bean.ExteriorPhotoR102Response
-import com.yxf.vehiclehj.bean.SavePhotoW102Request
+import com.yxf.vehiclehj.bean.*
 import com.yxf.vehiclehj.utils.*
 import com.yxf.vehicleinspection.service.QueryService
 import com.yxf.vehicleinspection.service.WriteService
@@ -14,6 +11,13 @@ import com.yxf.vehicleinspection.singleton.RetrofitService
  *   time:2023/2/20
  */
 class ExteriorRepo {
+    suspend fun getExteriorList(lsh : String) = apiCall {
+        RetrofitService.create(QueryService::class.java).queryR104(
+            EXTERIOR_ITEM,
+            getIpAddress(),
+            getJsonData(ExteriorItemR104Request(lsh))
+        )
+    }
     val inspectionGasItemList = mapOf(
         Pair("车辆机械状况是否良好",true),
         Pair("排气污染控制装置是否齐全，正常",true),

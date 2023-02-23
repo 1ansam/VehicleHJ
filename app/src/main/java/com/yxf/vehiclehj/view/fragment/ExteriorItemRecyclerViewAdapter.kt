@@ -2,6 +2,7 @@ package com.yxf.vehiclehj.view.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.yxf.vehiclehj.bean.ExteriorItemR104Response
 import com.yxf.vehiclehj.databinding.ItemExteriorItemBinding
 import com.yxf.vehicleinspection.base.BaseRvAdapter
 import com.yxf.vehicleinspection.base.BaseRvViewHolder
@@ -10,7 +11,7 @@ import com.yxf.vehicleinspection.base.BaseRvViewHolder
  *   author:yxf
  *   time:2023/2/20
  */
-class ExteriorItemRecyclerViewAdapter : BaseRvAdapter<Map.Entry<String,Boolean>,ItemExteriorItemBinding>() {
+class ExteriorItemRecyclerViewAdapter : BaseRvAdapter<ExteriorItemR104Response,ItemExteriorItemBinding>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -23,9 +24,12 @@ class ExteriorItemRecyclerViewAdapter : BaseRvAdapter<Map.Entry<String,Boolean>,
         holder: BaseRvViewHolder<ItemExteriorItemBinding>,
         position: Int,
         binding: ItemExteriorItemBinding,
-        bean: Map.Entry<String,Boolean>,
+        bean: ExteriorItemR104Response,
     ) {
-        binding.tvName.text = bean.key
-        binding.swValue.isChecked = bean.value
+        binding.tvDm.text = bean.Dm
+        binding.tvMc.text = bean.Mc
+        binding.ivStatus.setOnClickListener {
+            onItemViewClickListener?.onItemClick(it,position,bean)
+        }
     }
 }

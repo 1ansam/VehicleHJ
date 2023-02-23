@@ -1,8 +1,12 @@
 package com.yxf.vehiclehj
 
+import com.yxf.vehiclehj.utils.date2String
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.util.Date
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTime
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +16,7 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val date = Date()
+        println(date2String(date,"HHmmss"))
     }
 }
