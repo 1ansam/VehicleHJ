@@ -49,6 +49,11 @@ class LoginFragment : BaseBindingFragment<FragmentLoginBinding>() {
         }
     }
 
+    /**
+     * 登录
+     * @param username 用户名
+     * @param password 密码
+     */
     fun login(username : String, password : String){
         lifecycleScope.launchWhenCreated {
             viewModel.writeUser(username,password).collect{

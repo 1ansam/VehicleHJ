@@ -33,6 +33,9 @@ class ExteroirPhotoRecyclerViewAdapter :
         }
     }
 
+    /**
+     * 防止ViewHolder错误复用 最简单最笨的办法 后续需改进
+     */
     override fun getItemViewType(position: Int): Int {
         return position
     }

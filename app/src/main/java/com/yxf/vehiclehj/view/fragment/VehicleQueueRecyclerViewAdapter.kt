@@ -15,10 +15,7 @@ import com.yxf.vehicleinspection.base.BaseRvAdapter
 import com.yxf.vehicleinspection.base.BaseRvViewHolder
 import java.util.zip.Inflater
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class VehicleQueueRecyclerViewAdapter() :  BaseRvAdapter<VehicleQueueR101Response,FragmentVehicleQueueBinding>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,

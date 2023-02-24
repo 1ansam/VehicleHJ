@@ -79,7 +79,9 @@ fun <T> getJsonData(elements : List<T>) : String{
 //    }
     return GsonSingleton.instance.toJson(CommonRequest(requestArray))
 }
-
+/**
+ * 获取本机IP地址 格式为xxx.xxx.xxx.xxx
+ */
 fun getIpAddress() : String {
     val wifiManager : WifiManager = MyApp.context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
     if (wifiManager.isWifiEnabled){
@@ -131,7 +133,11 @@ fun showShortSnackbar(view : View, string: String){
 fun showLongSnackbar(view : View, string: String){
     Snackbar.make(view,string, Snackbar.LENGTH_LONG).setTextMaxLines(5).show()
 }
-
+/**
+ * 将Bitmap转成base64字符串
+ * @param bitmap Bitmap对象
+ * @return String base64字符串
+ */
 fun bitmap2Base64(bitmap: Bitmap) : String{
 
     var baos : ByteArrayOutputStream? = null
@@ -151,6 +157,12 @@ fun bitmap2Base64(bitmap: Bitmap) : String{
     }
     return ""
 }
+/**
+ * 从drawable获取Bitmap
+ * 多用于ImageView获取Bitmap对象
+ * @param drawable Drawable对象
+ * @return Bitmap对象
+ */
 fun bitmapDrawable2Base64(bitmapDrawable : Drawable) : String{
     return bitmap2Base64(getBitmapFromDrawable(bitmapDrawable))
 }
@@ -217,7 +229,11 @@ fun string2String(stringDate: String,oldFormat: String,newFormat: String) : Stri
     simpleDateFormat = SimpleDateFormat(newFormat)
     return simpleDateFormat.format(date)
 }
-
+/**
+ * 判断是否应该收起键盘
+ * @param v 当前焦点的View
+ * @param ev 事件
+ */
 fun isShouldHideKeyboard(v: View,ev : MotionEvent) : Boolean{
     if (v is EditText){
         val leftTop = intArrayOf(0,0)

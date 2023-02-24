@@ -13,6 +13,9 @@ import com.yxf.vehicleinspection.singleton.RetrofitService
  *   time:2023/2/22
  */
 class UserRepo {
+    /**
+     * 写入用户登录
+     */
     suspend fun writeUser(username: String, password: String) = apiCall {
         RetrofitService.create(WriteService::class.java).writeW001(
             WRITE_USER_LOGIN,

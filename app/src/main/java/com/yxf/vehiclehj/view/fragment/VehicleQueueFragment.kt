@@ -29,16 +29,16 @@ import com.yxf.vehicleinspection.base.BaseBindingFragment
 import com.yxf.vehicleinspection.base.BaseRvAdapter
 
 /**
- * A fragment representing a list of Items.
+ * 车辆队列fragment
  */
 class VehicleQueueFragment : BaseBindingFragment<FragmentVehicleQueueListBinding>() {
     private val viewModel by viewModels<QueueViewModel>{ QueueViewModelFactory((this.requireActivity().application as MyApp).queueRepo)}
     private val adapter = VehicleQueueRecyclerViewAdapter()
+    //用来接收从前驱点传递的数据
     private val args by navArgs<VehicleQueueFragmentArgs>()
     override fun init() {
         binding.list.adapter = adapter
-        adapter.data = listOf(
-        )
+
         adapter.onItemViewClickListener = object : BaseRvAdapter.OnItemViewClickListener<VehicleQueueR101Response> {
             override fun onItemClick(view: View, position: Int, bean: VehicleQueueR101Response) {
                 findNavController().navigate(VehicleQueueFragmentDirections.actionVehicleQueueFragmentToExteriorFragment(bean,args.beanR001))
@@ -68,6 +68,9 @@ class VehicleQueueFragment : BaseBindingFragment<FragmentVehicleQueueListBinding
 
     }
 
+    /**
+     * 获取车辆队列
+     */
     private fun getQueue(hphm : String) {
         lifecycleScope.launchWhenCreated {
             viewModel.getInspectionQueue(hphm).collect{

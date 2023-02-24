@@ -15,9 +15,15 @@ import com.yxf.vehiclehj.utils.isShouldHideKeyboard
 import com.yxf.vehiclehj.utils.showShortToast
 import com.yxf.vehicleinspection.base.BaseBindingActivity
 
+/**
+ * 宿主activity 所有fragment的容器
+ */
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
     override fun init() {
+        /**
+         * 动态请求权限
+         */
         PermissionX.init(this)
             .permissions(
                 Manifest.permission.CAMERA,
@@ -31,6 +37,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
             }
     }
 
+    /**
+     * 点击非键盘区域收起键盘
+     */
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         if (ev?.action == MotionEvent.ACTION_DOWN){
             val view = currentFocus ?: return super.dispatchTouchEvent(ev)

@@ -9,7 +9,9 @@ import java.util.concurrent.TimeUnit
 /**
  *   author:yxf
  *   time:2021/9/29
- *   retrofit 单例
+ *   封装了retrofit
+ *   用法 RetrofitService.create(<Service::class.java>).<function>
+ *
  */
 object RetrofitService {
 
@@ -23,6 +25,10 @@ object RetrofitService {
     fun <T> create (clazz: Class<T>): T {
         return getRetrofit().create(clazz)
     }
+
+    /**
+     * 规定请求超时时间
+     */
     private val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(5,TimeUnit.SECONDS)
         .readTimeout(10,TimeUnit.SECONDS)

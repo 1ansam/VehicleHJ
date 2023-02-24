@@ -14,7 +14,9 @@ import java.lang.IllegalArgumentException
  *   time:2023/2/22
  */
 class UserViewModel(val userRepo: UserRepo) : ViewModel() {
-
+    /**
+     * 写入用户登录
+     */
     fun writeUser(username : String, password : String) = flow {
         emit(userRepo.writeUser(username, password))
     }

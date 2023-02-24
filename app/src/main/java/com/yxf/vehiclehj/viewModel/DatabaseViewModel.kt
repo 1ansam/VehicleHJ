@@ -12,14 +12,28 @@ import java.lang.IllegalArgumentException
  *   time:2023/2/22
  */
 class DatabaseViewModel(private val databaseRepo: DatabaseRepo) : ViewModel() {
+    /**
+     * 获取系统参数
+     */
     fun getSystemParams() = flow { emit(databaseRepo.getSystemParams()) }
+    /**
+     * 插入系统参数
+     * @param systemParamsList webapi获取到的系统参数列表
+     * @return 返回插入的行数列表
+     */
     suspend fun insertSystemParams(systemParamsList : List<SystemParamsR103Response>) : List<Long>{
         return databaseRepo.insertSystemParams(systemParamsList)
     }
+    /**
+     * 删除系统参数
+     */
     suspend fun deleteSystemParams(){
         return databaseRepo.deleteSystemParams()
     }
 
+    /**
+     * 获取检验机构编号
+     */
     fun getJyjgbh() = databaseRepo.getJyjgbh()
 }
 

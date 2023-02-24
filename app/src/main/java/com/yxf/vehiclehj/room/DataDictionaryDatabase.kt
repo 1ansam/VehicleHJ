@@ -10,6 +10,8 @@ import com.yxf.vehiclehj.bean.SystemParamsR103Response
  *   time:2021/11/9
  *   数据库创建类
  *   详细信息见官方room文档
+ *   @since https://developer.android.com/jetpack/androidx/releases/room
+ *
  */
 @Database(entities = [SystemParamsR103Response::class],version = 2,exportSchema = false)
 abstract class DataDictionaryDatabase : RoomDatabase() {

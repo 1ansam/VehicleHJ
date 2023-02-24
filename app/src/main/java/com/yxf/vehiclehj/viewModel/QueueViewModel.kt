@@ -12,6 +12,10 @@ import java.lang.IllegalArgumentException
  *   time:2023/2/22
  */
 class QueueViewModel(val queueRepo: QueueRepo) : ViewModel() {
+    /**
+     * 获取机动车待检队列
+     * @param hphm 号牌号码
+     */
     fun getInspectionQueue(hphm : String) = flow{
         emit(queueRepo.getInspectionQueue(hphm))
     }

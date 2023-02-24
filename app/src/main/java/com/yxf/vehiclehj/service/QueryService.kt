@@ -36,6 +36,9 @@ interface QueryService {
         @Query("jsonData") jsonData: String,
     ): CommonResponse<ExteriorPhotoR102Response>
 
+    /**
+     * 查询系统参数
+     */
     @POST("VehicleInspection/Query")
     suspend fun  queryR103(
         @Query("jkId") jkId: String,
@@ -43,7 +46,9 @@ interface QueryService {
         @Query("jsonData") jsonData: String,
     ): CommonResponse<SystemParamsR103Response>
 
-
+    /**
+     * 查询机动车环检需要人工检验的项目
+     */
     @POST("VehicleInspection/Query")
     suspend fun  queryR104(
         @Query("jkId") jkId: String,

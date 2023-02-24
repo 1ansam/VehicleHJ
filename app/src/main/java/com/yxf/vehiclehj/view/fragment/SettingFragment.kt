@@ -44,6 +44,9 @@ class SettingFragment : BaseBindingFragment<FragmentSettingBinding>() {
         }
     }
 
+    /**
+     * 获取系统参数并保存到数据库
+     */
     private fun getData() {
 
         lifecycleScope.launchWhenCreated {

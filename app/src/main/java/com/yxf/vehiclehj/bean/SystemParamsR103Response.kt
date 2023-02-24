@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 /**
  *   author:yxf
  *   time:2021/11/11
+ *   系统参数 与 SystermCs_All 对应
+ *   @param Bz1 检验机构编号
  */
 @Entity(tableName = "SystemParams")
 data class SystemParamsR103Response(

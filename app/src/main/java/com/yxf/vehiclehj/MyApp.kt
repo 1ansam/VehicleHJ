@@ -42,6 +42,7 @@ class MyApp : Application() {
         super.onCreate()
 
         context = applicationContext
+        //取消下面这行可以收集Stacktrack写入到/Android/data/<packageName>/Download/log目录下 后期维护只需让客户发报错文件即可
 //        CrashHandler.getInstance(context)?.setCrashLogDir(getCrashLogDir())
 
 
